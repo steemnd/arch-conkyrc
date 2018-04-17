@@ -48,9 +48,10 @@ Uptime: $alignr $uptime_short
 CPU ${hr 2}
 
 ${cpugraph 20}
-model: ${alignr}Intel Core i5-3380M
 CPU1: ${cpu cpu1}% ${alignr}CPU2: ${cpu cpu2}%
 CPU3: ${cpu cpu3}% ${alignr}CPU4: ${cpu cpu3}%
+
+model: ${alignr}Intel Core i5-3380M
 Freq: $alignr $freq_g GHz
 Temp: $alignr ${exec expr `cat /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input` / 1000}C
 Processes: $alignr $processes
@@ -60,9 +61,9 @@ Running: $alignr $running_processes
 MEMORY ${hr 2}
 
 RAM: $alignr $mem / $memmax
-${membar 3}
+${membar 4}
 Swap: $alignr N/A
-${swapbar 3}
+${swapbar 4}
 
 
 TOP ${hr 2}

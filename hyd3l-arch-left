@@ -30,22 +30,37 @@ override_utf8_locale no
 uppercase yes
 
 TEXT
-STORAGE ${hr 2}
+BATTERY ${hr 2}
+
+${battery_bar 4}
+status: ${alignr}${battery}
+time: ${alignr}${battery_time}
+
+
+DISK ${hr 2}
 
 Read ${diskio_read /dev/sda} ${alignr} Write ${diskio_write /dev/sda}
 ${diskiograph_read /dev/sda 25, 107} ${alignr}${diskiograph_write /dev/sda 25,107}
 MODEL: $alignr Drevo ES SSD
 SIZE: $alignr 128 GB
-TEMP: $alignr ${exec sudo hddtemp /dev/sda | cut -b 25-26}C
+TEMP: $alignr ${exec /home/hyd3l/.conky/hyd3l/hddstat.sh}C
+
+
+STORAGE ${hr 2}
 
 / ${alignr}${fs_used /} / ${fs_size /}
-${fs_bar 3 /}
+${fs_bar 4 /}
 
 /boot ${alignr}${fs_used /boot} / ${fs_size /boot}
-${fs_bar 3 /boot}
+${fs_bar 4 /boot}
 
 
 NETWORK ${hr 2}
+
+essid: ${alignr} ${wireless_essid wlp3s0}
+bssid: ${alignr} ${wireless_ap wlp3s0}
+inet addr: ${alignr} ${addr wlp3s0}
+power: ${alignr} ${wireless_link_qual wlp3s0}%
 
 Down ${downspeedf wlp3s0} ${alignr}Up ${upspeedf wlp3s0}
 ${downspeedgraph wlp3s0 25,107} ${alignr}${upspeedgraph wlp3s0 25,107}
